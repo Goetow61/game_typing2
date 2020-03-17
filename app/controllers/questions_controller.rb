@@ -1,10 +1,10 @@
 class QuestionsController < ApplicationController
   def index
-    id = User.where(email: ENV['GMAIL_ADDRESS']).select(:id)
-    @aggregates = Question.left_outer_joins(:results).where(user_id: id.ids[0]).select("questions.id, questions.title, questions.results_count, COUNT(distinct results.user_id) AS count_distinct_results_user_id").group("questions.id, questions.category, results_count").order("questions.id ASC")
-    @questions_words = Question.where(category: 0, user_id: id.ids[0]).order(:id)
-    @questions_sentences = Question.where(category: 1, user_id: id.ids[0]).order(:id)
-    @questions = Question.where.not(user_id: id.ids[0]).order(id: 'DESC').includes(:user)
+    default_user_id = User.where(email: ENV['GMAIL_ADDRESS']).select(:id).ids[0]
+    @aggregates = Question.left_outer_joins(:results).where(user_id: default_user_id).select("questions.id, questions.title, questions.results_count, COUNT(distinct results.user_id) AS count_distinct_results_user_id").group("questions.id, questions.category, results_count").order("questions.id ASC")
+    @questions_words = Question.where(category: 0, user_id: default_user_id).order(:id)
+    @questions_sentences = Question.where(category: 1, user_id: default_user_id).order(:id)
+    @questions = Question.where.not(user_id: default_user_id).order(id: 'DESC').includes(:user)
   end
 
   def new
@@ -24,6 +24,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @default_user_id = User.where(email: ENV['GMAIL_ADDRESS']).select(:id).ids[0]
+    @question = Question.find(params[:id]) 
   end
 
   def play

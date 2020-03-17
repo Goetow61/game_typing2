@@ -1,12 +1,2 @@
-.content
-  = form_with(model: @question,url: questions_path, local: true) do |f|
-    .field
-      = f.text_field :title, placeholder: "問題のタイトル"
-    .field
-      = f.text_area :overview, placeholder: "問題の概要"
-    .field
-      = f.select :category, Question.categories.keys
-    .field
-      = f.file_field :src
-    .actions
-      = f.submit
+%h1 Questions#new
+%p Find me in app/views/questions/new.html.erb

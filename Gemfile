@@ -62,5 +62,3 @@ gem "omniauth-rails_csrf_protection"
 gem 'counter_culture'
 gem 'pry-rails'
 gem 'font-awesome-sass'
-gem 'fog-aws'
-gem 'carrierwave'

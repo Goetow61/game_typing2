@@ -1,0 +1,30 @@
+.ranking {
+  max-width: 760px;
+  white-space: nowrap;
+  
+  table.ranking {
+    .thtd { 
+      background-color: lightyellow;
+      // border: 2px solid $accent;
+    }
+    .trtd {
+      background-color: white;
+      // border: 2px solid $accent;
+    }
+    td.num {
+      text-align: right;
+    }
+    td:empty {
+      visibility:hidden;
+      border: 0px;
+    }
+    th:empty {
+      visibility:hidden;
+      border: 0px;
+    }
+  }
+  &__link {
+    margin-top: 20px;
+    text-align: right;
+  }
+}

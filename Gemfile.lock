@@ -58,6 +58,9 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    after_commit_action (1.1.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.6)
@@ -73,7 +76,12 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    coderay (1.1.2)
     concurrent-ruby (1.1.6)
+    counter_culture (2.3.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      after_commit_action (~> 1.0)
     crass (1.0.6)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -86,6 +94,8 @@ GEM
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
+    font-awesome-sass (5.12.0)
+      sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -161,6 +171,11 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (4.0.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -270,7 +285,9 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  counter_culture
   devise
+  font-awesome-sass
   haml-rails
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
@@ -279,6 +296,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   omniauth-twitter
+  pry-rails
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
   sass-rails (>= 6)

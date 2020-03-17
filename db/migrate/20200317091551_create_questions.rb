@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
     create_table :questions do |t|
       t.string :title, null: false
       t.text :overview
-      t.string :srt, null: false
+      t.string :src, null: false
       t.integer :category, null: false
 
       t.timestamps

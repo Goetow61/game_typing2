@@ -8,9 +8,16 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @question = Question.new
   end
 
   def create
+    @question = Question.new(question_params)
+    if @question.save!
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -24,4 +31,15 @@ class QuestionsController < ApplicationController
 
   def result
   end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :overview, :category, :src).merge(user_id: current_user.id)
+  end
+
+  def result_params
+    params.require(:question).permit(:correct_cnt, :wrong_cnt, :elapsed_time, :speed).merge(user_id: current_user.id, question_id: params[:id])
+  end
+
 end

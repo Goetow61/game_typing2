@@ -1,0 +1,48 @@
+@mixin boxBase($margin: 30px auto, $padding: 10px) {
+  margin: $margin;
+  padding: $padding;
+}
+
+$gray: #D8D8D8;
+$accent: #57C3E9;
+$dark: #666;
+
+form {
+  h3 {
+    margin: 0 0 20px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 20px;
+    color: $dark;
+  }
+  input,textarea {
+    width: 60%;
+    @include boxBase(5px 0 15px,10px);
+    border: 1px solid $gray;
+    border-radius: 5px;
+    font-family: "游ゴシック", "YuGothic";
+    font-size: 18px;
+  }
+  input[type="submit"] {
+    background-color: $accent;
+    border-radius: 20px;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    &:hover {
+      background-color: lighten($accent, 10%);
+    }
+  }
+  input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+  }
+  a {
+    margin: 10px 0;
+  }
+  // label[for="user_remember_me"] {
+  //   float: left;
+  // }
+}
+
+

@@ -1,2 +1,61 @@
-%h1 Questions#index
-%p Find me in app/views/questions/index.html.erb
+.content
+  .top-area
+    英語の単語もしくは文章をタイピングしていくゲームです。
+    %br
+    やりたい問題の部分をクリックしてください。
+    %br
+    %br
+    日本語のタイピングは実装が難しいので実装していません。
+    %br
+    日本語訳はgoogle翻訳を使ってます。
+  .template-area
+    .box
+      .category
+        %h2
+          既定の問題　英語-単語カテゴリ
+      .quote-source
+        %h3
+          = link_to "http://www.newgeneralservicelist.org" do
+            = image_tag("http://www.newgeneralservicelist.org/favicon.ico", width:"32px")
+            THE TOEIC SERVICE LIST 1.1
+      .list-area
+        - @questions_words.each_with_index do |question_words, idx|
+          %table
+            %tr
+              %td
+                = link_to question_words.title, "/questions/#{question_words.id}", method: :get
+              %td
+                = link_to @aggregates.to_a[idx].count_distinct_results_user_id.to_s + 'users, ' + @aggregates.to_a[idx].results_count.to_s + 'cases', "/rankings/#{@aggregates.to_a[idx].id.to_s}", method: :get
+    .box
+      .category
+        %h2
+          既定の問題　英語-文章カテゴリ
+      .quote-source
+        %h3
+          = link_to "https://tatoeba.org" do
+            = image_tag("https://tatoeba.org/favicon.ico", width:"32px")
+            Tatoeba 文章と翻訳のコレクション
+      .list-area
+        - @questions_sentences.each.with_index(@questions_words.length) do |question_sentences, idx|
+          %table
+            %tr
+              %td
+                = link_to question_sentences.title, "/questions/#{question_sentences.id}", method: :get
+              %td
+                = link_to @aggregates.to_a[idx].count_distinct_results_user_id.to_s + 'users, ' + @aggregates.to_a[idx].results_count.to_s + 'cases', "/rankings/#{@aggregates.to_a[idx].id.to_s}", method: :get
+    .box
+      .category
+        %h2
+          ユーザー投稿　投稿が新しい順
+      .list-area
+        %table.user-post-table
+          - @questions.each do |question|
+            %tr
+              %td.categoryy{rowspan: 2}
+                = question.category
+              -# %td.title
+              %td.title
+                = link_to question.title, "/questions/#{question.id}", method: :get
+            %tr
+              %td.nickname
+                = "by#{question.user.nickname}"
